@@ -1,0 +1,28 @@
+<div class="ticker-list">
+
+  <ng-container *ngIf="selectedAssets$ | async as list">
+    <ng-container *ngIf="list.length; else emptyList">
+      <mat-card class="telet-theme ticker-el" *ngFor="let asset of list; trackBy: trackBy">
+        <h3>{{ asset.name }} ({{ asset.symbol }})</h3>
+        <mat-card-subtitle>
+          <ng-container *ngIf="+asset.priceUsd > 1; else smallPrice">
+            {{ asset.priceUsd | number:'0.0-2' }} USD
+          </ng-container>
+          <ng-template #smallPrice>
+            {{ asset.priceUsd | number:'0.0-8' }} USD
+          </ng-template>
+        </mat-card-subtitle>
+        <mat-card-actions align="end">
+          <button mat-button mat-raised-button (click)="removeAsset(asset.id)">Remove</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+
+    <ng-template #emptyList>
+      <h3>
+        No assets selected
+      </h3>
+    </ng-template>
+  </ng-container>
+
+</div>

@@ -1,0 +1,22 @@
+.asset {
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &-el {
+    width: 50%;
+    ::ng-deep {
+      .mat-checkbox-layout {
+        white-space: normal;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 767px){
+  .asset {
+    &-el {
+      width: 100%;
+    }
+  }
+}

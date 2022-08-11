@@ -1,0 +1,31 @@
+.ticker {
+  &-list {
+    margin-left: -10px;
+    margin-right: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 20px);
+  }
+  &-el {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and(max-width: 767px){
+  .ticker {
+    &-el {
+      width: calc(50% - 20px);
+    }
+  }
+}
+
+@media screen and(max-width: 450px){
+  .ticker {
+    &-el {
+      width: calc(100% - 20px);
+    }
+  }
+}

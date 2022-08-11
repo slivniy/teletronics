@@ -1,0 +1,10 @@
+.ticker {
+  &-header-actions {
+    display: flex;
+    align-items: center;
+    button {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+  }
+}
