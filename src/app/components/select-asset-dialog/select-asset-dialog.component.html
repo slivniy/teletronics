@@ -7,11 +7,11 @@
 
 <div mat-dialog-content>
 
-  <div class="asset-list" *ngIf="availableAssets | async as list">
+  <div class="asset-list" *ngIf="availableAssets$ | async as list">
     <div class="asset-el" *ngFor="let asset of list | filterAssetList: assetFilter">
-      <mat-checkbox class="example-margin"
-                    [checked]="selectedAssets.has(asset.id)"
-                    (change)="onSelect($event.checked, asset.id)">
+      <mat-checkbox
+        [checked]="selectedAssets.has(asset.id)"
+        (change)="onSelect($event.checked, asset.id)">
         {{ asset.name }} ({{ asset.symbol }})
       </mat-checkbox>
     </div>

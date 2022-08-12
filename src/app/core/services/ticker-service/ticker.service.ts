@@ -13,7 +13,7 @@ import { WebsocketService } from '../websocket-service/websocket.service';
 export class TickerService {
 
   private allAssets: AssetInterface[] = [];
-  availableFilteredAssets$ = new BehaviorSubject<AssetInterface[]>([]);
+  private availableFilteredAssets$ = new BehaviorSubject<AssetInterface[]>([]);
   private userSelectedAssets: string[] = [];
 
   constructor(

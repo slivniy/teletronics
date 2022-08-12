@@ -12,7 +12,7 @@ import { TickerService } from '../../core/services/ticker-service/ticker.service
 })
 export class SelectAssetDialogComponent implements OnInit {
 
-  availableAssets: Observable<AssetInterface[]>;
+  availableAssets$: Observable<AssetInterface[]>;
   assetFilter: string;
   selectedAssets = new Set<string>();
 
@@ -22,7 +22,7 @@ export class SelectAssetDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.availableAssets = this.tickerService.availableFilteredAssets;
+    this.availableAssets$ = this.tickerService.availableFilteredAssets;
   }
 
   onSave(): void {

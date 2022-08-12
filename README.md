@@ -1,35 +1,33 @@
 # Teletronics
 
-## Development server
+Application allows you to get current prices for Crypto assets and watch market changes online. You can select preferable assets among 2000 available. Selected assets list will be stored locally to be available after reload.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Running in Docker container
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Build and run from Docker container
-
-[//]: # (- docker build -t teletronics .)
 - Build docker image:
 
 `docker build -t teletronics .`
 
-- Run application build in container:
+- Run image:
 
 `docker run -d -p 8080:80 teletronics`
 
 - Now project is available on http://localhost:8080/
 
+- To stop container run `docker ps` and get <CONTAINER ID> for created image. Then run `docker stop <CONTAINER ID>`
+
+All process (cloning repo, building artifacts...) are set to be done in Docker image. Also you can build application locally and copy artifacts to image (use commented lines in Dockerfile).
+
+## Development server
+
+Run `ng serve` for a dev server. Now you can change source code and check your changes at Navigate to `http://localhost:4200/`
+
+## Build
+
+Run `npm run build:prod` to build the project for production. The build artifacts will be stored in the `dist/teletronics` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+Run `ng test --code-coverage` to execute tests with coverage. You can see results at `http://localhost:63342/teletronics/coverage/teletronics/`

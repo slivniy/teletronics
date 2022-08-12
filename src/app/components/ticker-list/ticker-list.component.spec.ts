@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TickerListComponent } from './ticker-list.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TickerListComponent', () => {
   let component: TickerListComponent;
@@ -8,7 +8,10 @@ describe('TickerListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TickerListComponent ]
+      declarations: [ TickerListComponent ],
+      imports: [
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   });

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TickerHeaderSelectorComponent } from './ticker-header-selector.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('TickerHeaderSelectorComponent', () => {
   let component: TickerHeaderSelectorComponent;
@@ -8,7 +9,11 @@ describe('TickerHeaderSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TickerHeaderSelectorComponent ]
+      declarations: [ TickerHeaderSelectorComponent ],
+      imports: [
+        HttpClientTestingModule,
+        MatDialogModule
+      ]
     })
     .compileComponents();
   });
