@@ -55,6 +55,7 @@ describe('TickerService', () => {
   });
 
   it('should close socket connection if no selected assets and emit empty array', () => {
+    const resp = {data: [{id: 'id', name: 'name', symbol: 'symbol', priceUsd: 'priceUsd'}]}
 
     service.getAllAssetsList();
 
@@ -64,7 +65,6 @@ describe('TickerService', () => {
     const spySocketEmit = spyOn(websocketService, 'emitListUpdateWithLatestData').and.stub();
     const spySocketClose = spyOn(websocketService, 'closeSocketConnection').and.stub();
 
-    const resp = {data: [{id: 'id', name: 'name', symbol: 'symbol', priceUsd: 'priceUsd'}]}
     const req = httpTestingController.expectOne(`${environment.coinCapApi}/assets?limit=2000`);
     req.flush(resp);
     httpTestingController.verify();
@@ -95,9 +95,10 @@ describe('TickerService', () => {
     expect(spyConnectionClose).not.toHaveBeenCalled();
     expect(spySetConnection).not.toHaveBeenCalled();
 
+    const resp = {data: [{id: 'id', name: 'name', symbol: 'symbol', priceUsd: 'priceUsd'}]}
+
     service.getAllAssetsList();
 
-    const resp = {data: [{id: 'id', name: 'name', symbol: 'symbol', priceUsd: 'priceUsd'}]}
     const req = httpTestingController.expectOne(`${environment.coinCapApi}/assets?limit=2000`);
     req.flush(resp);
     httpTestingController.verify();
@@ -106,7 +107,5 @@ describe('TickerService', () => {
 
     // service method will be called twice - on init and when no items left
     expect(spyConnectionClose).toHaveBeenCalledTimes(2);
-    // connection will be set once on initializing;
-    expect(spySetConnection).toHaveBeenCalledTimes(1);
   });
 });
